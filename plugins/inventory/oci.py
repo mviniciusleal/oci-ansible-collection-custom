@@ -1227,7 +1227,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
                         for compartment in oci_common_utils.list_all_resources(
                             target_fn=self.identity_client.list_compartments,
                             compartment_id=parent_compartment.id,
-                            access_level="ACCESSIBLE",
+                            access_level="ACCESSIBLE"
                             #limit=100,
                         )
                         if self.filter_resource(
@@ -1543,7 +1543,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
 
             compartment_name = self.sanitize(compartment.name)
             db_host_vars.update({"compartment_name": compartment_name})
-            db_host_vars.update({"_awx_description": db_host.display_name})
+            db_host_vars.update({"_awx_description": db_host.hostname})
 
             common_groups = self.get_common_groups(instance=db_host, region=region)
 
