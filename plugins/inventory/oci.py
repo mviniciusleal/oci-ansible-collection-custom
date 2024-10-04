@@ -1345,7 +1345,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
                     self.filter_common_groups(
                         common_groups,
                         "freeform_tags",
-                        {"freeform_tag": {key: instance.freeform_tags[key]}},
+                        {"key": key, "value": instance.freeform_tags[key]},
                         tag_group_name,
                     )
 
@@ -1364,7 +1364,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
                         self.filter_common_groups(
                             common_groups,
                             "defined_tags",
-                            {"defined_tag": {namespace: {key: instance.defined_tags[namespace][key]}}},
+                            {"namespace": namespace, "key": key, "value": instance.defined_tags[namespace][key]},
                             defined_tag_group_name,
                         )
         return common_groups
