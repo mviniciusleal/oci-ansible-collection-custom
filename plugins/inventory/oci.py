@@ -1639,6 +1639,11 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
         self.templar.available_variables = hostvars
         for condition_template in filter_template_list:
             try:
+                self.debug(
+                    "TESTE: {0}".format(
+                        self.templar.template(condition_template)
+                    )
+                )
                 jinja_condition = "%s%s%s" % ("{{", condition_template, "}}")
                 if self.templar.template(jinja_condition):
                     return True
